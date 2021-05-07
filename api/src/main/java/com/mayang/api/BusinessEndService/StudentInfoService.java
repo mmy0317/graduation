@@ -2,7 +2,8 @@ package com.mayang.api.BusinessEndService;
 
 import com.mayang.api.model.StuInfoDTO.StuInfoDTO;
 
-public interface StudentInfoService {
+public interface
+StudentInfoService {
     /**
      * @description:增加学生信息
      * @param stuInfoDTO

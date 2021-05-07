@@ -1,4 +1,4 @@
-package com.mayang.api.model.StudentInfo;
+package com.mayang.provider.dao.StudentInfo;
 
 
 import com.baomidou.mybatisplus.annotation.IdType;

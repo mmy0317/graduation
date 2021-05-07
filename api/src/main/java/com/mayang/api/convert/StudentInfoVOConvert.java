@@ -16,7 +16,4 @@ public interface StudentInfoVOConvert {
 
     StuInfoDTO paramToDto(StuParam stuParam);
 
-    StuInfoDO stuDtoToDo(StuInfoDTO stuInfoDTO);
-
-    StuInfoDTO stuDoToDto(StuInfoDO stuInfoDO);
 }

@@ -4,11 +4,11 @@ import com.alibaba.dubbo.common.utils.StringUtils;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.mayang.api.BusinessEndService.StudentInfoService;
-import com.mayang.api.convert.StudentInfoVOConvert;
 import com.mayang.api.model.Enum.StuStatus;
 import com.mayang.api.model.StuInfoDTO.StuInfoDTO;
-import com.mayang.api.model.StudentInfo.StuInfoDO;
+import com.mayang.provider.dao.StudentInfo.StuInfoDO;
 import com.mayang.api.utils.MyException;
+import com.mayang.provider.convert.StudentInfoDaoConvert;
 import com.mayang.provider.dao.mapper.StuInfoMapper;
 
 
@@ -24,7 +24,7 @@ public class StudentInfoImpl implements StudentInfoService{
     public Boolean AddInfo(StuInfoDTO stuInfoDTO) {
         //对于数据进行判断
         this.Check(stuInfoDTO);
-        StuInfoDO stuInfoDO = StudentInfoVOConvert.INSTANCE.stuDtoToDo(stuInfoDTO);
+        StuInfoDO stuInfoDO =StudentInfoDaoConvert.INSTANCE.stuDtoToDo(stuInfoDTO);
         Integer i = stuInfoMapper.insert(stuInfoDO);
         if (i>0){
             return true;
@@ -41,7 +41,7 @@ public class StudentInfoImpl implements StudentInfoService{
     public StuInfoDTO GetInfoByNum(Integer stuNum) {
         LambdaQueryWrapper<StuInfoDO> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         StuInfoDO stuSelectByNumInfoDO = stuInfoMapper.selectOne(lambdaQueryWrapper.eq(StuInfoDO::getStuNum, stuNum));
-        StuInfoDTO stuSelectByNumInfoDTO = StudentInfoVOConvert.INSTANCE.stuDoToDto(stuSelectByNumInfoDO);
+        StuInfoDTO stuSelectByNumInfoDTO = StudentInfoDaoConvert.INSTANCE.stuDoToDto(stuSelectByNumInfoDO);
         return stuSelectByNumInfoDTO;
     }
 
@@ -75,7 +75,7 @@ public class StudentInfoImpl implements StudentInfoService{
     public Boolean UpdateInfo(StuInfoDTO stuInfoForUpdateDTO) {
         this.Check(stuInfoForUpdateDTO);
         //对库中的相同数据进行删除
-        StuInfoDO stuInfoForUpdateDO = StudentInfoVOConvert.INSTANCE.stuDtoToDo(stuInfoForUpdateDTO);
+        StuInfoDO stuInfoForUpdateDO = StudentInfoDaoConvert.INSTANCE.stuDtoToDo(stuInfoForUpdateDTO);
         LambdaQueryWrapper<StuInfoDO> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         stuInfoMapper.delete(lambdaQueryWrapper
                 .eq(StuInfoDO::getStuNum, stuInfoForUpdateDTO.getStuNum())
