@@ -1,7 +1,6 @@
 package com.mayang.api.convert;
 
 import com.mayang.api.model.StuInfoDTO.StuInfoDTO;
-import com.mayang.api.model.StudentInfo.StuInfoDO;
 import com.mayang.api.model.param.StuAddParam;
 import com.mayang.api.model.param.StuParam;
 import org.mapstruct.Mapper;

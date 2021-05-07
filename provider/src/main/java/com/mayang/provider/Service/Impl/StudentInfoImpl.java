@@ -6,9 +6,10 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.mayang.api.BusinessEndService.StudentInfoService;
 import com.mayang.api.model.Enum.StuStatus;
 import com.mayang.api.model.StuInfoDTO.StuInfoDTO;
+import com.mayang.provider.convert.StudentInfoDaoConvert;
 import com.mayang.provider.dao.StudentInfo.StuInfoDO;
 import com.mayang.api.utils.MyException;
-import com.mayang.provider.convert.StudentInfoDaoConvert;
+
 import com.mayang.provider.dao.mapper.StuInfoMapper;
 
 
@@ -24,7 +25,7 @@ public class StudentInfoImpl implements StudentInfoService{
     public Boolean AddInfo(StuInfoDTO stuInfoDTO) {
         //对于数据进行判断
         this.Check(stuInfoDTO);
-        StuInfoDO stuInfoDO =StudentInfoDaoConvert.INSTANCE.stuDtoToDo(stuInfoDTO);
+        StuInfoDO stuInfoDO = StudentInfoDaoConvert.INSTANCE.stuDtoToDo(stuInfoDTO);
         Integer i = stuInfoMapper.insert(stuInfoDO);
         if (i>0){
             return true;
