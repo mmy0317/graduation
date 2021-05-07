@@ -1,9 +1,10 @@
 package com.mayang.api.BusinessEndService;
 
+import com.alibaba.dubbo.doc.annotation.InterfaceDesc;
 import com.mayang.api.model.StuInfoDTO.StuInfoDTO;
 
-public interface
-StudentInfoService {
+@InterfaceDesc(value = "活动相关api")
+public interface StudentInfoService {
     /**
      * @description:增加学生信息
      * @param stuInfoDTO
@@ -35,7 +36,7 @@ StudentInfoService {
 
     /**
      * @description:更新学生信息
-     * @param addParam
+     * @param stuInfoDTO
      * @return
      */
     Boolean UpdateInfo(StuInfoDTO stuInfoDTO);
