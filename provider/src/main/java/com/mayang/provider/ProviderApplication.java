@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @EnableDubbo
-@MapperScan
+@MapperScan(basePackages = "com.kaven.mybatisplus.dao")
 public class ProviderApplication {
 
     public static void main(String[] args) {

@@ -25,6 +25,10 @@ public class StudentInfoImpl implements StudentInfoService{
     public Boolean AddInfo(StuInfoDTO stuInfoDTO) {
         //对于数据进行判断
         this.Check(stuInfoDTO);
+        //真实姓名回填昵称
+        if (stuInfoDTO.getName()==null){
+            stuInfoDTO.setName(stuInfoDTO.getRealName());
+        }
         StuInfoDO stuInfoDO = StudentInfoDaoConvert.INSTANCE.stuDtoToDo(stuInfoDTO);
         Integer i = stuInfoMapper.insert(stuInfoDO);
         if (i>0){
@@ -108,9 +112,6 @@ public class StudentInfoImpl implements StudentInfoService{
             throw new MyException("该用户已存在");
         }
         //其余判断
-        if (stuInfoDOFindOne != null){
-            new MyException("该用户已存在");
-        }
         if (StringUtils.isEmpty(stuInfoDTO.getClassRoom())){
             String classroom = String.valueOf(stuInfoDTO.getStuNum()).substring(5,6);//获取班级
             stuInfoDTO.setClassRoom(classroom+"班");
