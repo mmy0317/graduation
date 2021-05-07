@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class EndStuInfoController {
 
-    //todo:controller负责转换数据类型为DTO
     @Reference
     private StudentInfoService studentInfoService;
 
