@@ -5,10 +5,11 @@ import lombok.Data;
 import com.wordnik.swagger.annotations.ApiModel;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Data
 @ApiModel(value="StuAddParam",description="新增学生信息")
-public class StuAddParam {
+public class StuAddParam implements Serializable {
     @ApiModelProperty(value="学生昵称")
     @NotNull(message="学生姓名不能为空")
     private String name;

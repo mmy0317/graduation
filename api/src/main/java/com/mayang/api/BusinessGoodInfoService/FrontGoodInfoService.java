@@ -1,8 +1,6 @@
 package com.mayang.api.BusinessGoodInfoService;
 
 import com.mayang.api.model.StuInfoDTO.GoodsInfoDTO;
-import com.mayang.api.model.param.GoodsAddParam;
-import com.mayang.api.model.param.GoodsParam;
 
 public interface FrontGoodInfoService {
 

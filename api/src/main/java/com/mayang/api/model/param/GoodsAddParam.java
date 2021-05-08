@@ -5,11 +5,12 @@ import com.wordnik.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @ApiModel(value="goodsAddParam",description="新增商品信息")
-public class GoodsAddParam {
+public class GoodsAddParam implements Serializable {
 
 
     @ApiModelProperty(value="商品编号")

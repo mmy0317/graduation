@@ -5,13 +5,14 @@ import com.wordnik.swagger.annotations.ApiModel;
 import com.wordnik.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
 
 
 @Data
 @ApiModel(value="goodsParam",description="商品信息")
-public class GoodsParam {
+public class GoodsParam implements Serializable {
 
     @ApiModelProperty(value="商品编号")
     @NotNull(message="商品编号不能为空")

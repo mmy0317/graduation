@@ -2,8 +2,10 @@ package com.mayang.api.model.StuInfoDTO;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class StuInfoDTO {
+public class StuInfoDTO implements Serializable {
 
     private String name;
 

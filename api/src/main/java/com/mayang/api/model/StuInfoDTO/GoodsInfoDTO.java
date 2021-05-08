@@ -4,12 +4,13 @@ import com.wordnik.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @Data
-public class GoodsInfoDTO {
+public class GoodsInfoDTO implements Serializable {
 
     /**
      * 商品编号
