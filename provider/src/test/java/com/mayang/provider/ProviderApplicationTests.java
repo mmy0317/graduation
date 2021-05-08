@@ -12,6 +12,7 @@ import javax.annotation.Resource;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
+public
 class ProviderApplicationTests {
 
 }

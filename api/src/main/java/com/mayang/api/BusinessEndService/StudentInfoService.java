@@ -1,9 +1,7 @@
 package com.mayang.api.BusinessEndService;
 
-import com.alibaba.dubbo.doc.annotation.InterfaceDesc;
 import com.mayang.api.model.StuInfoDTO.StuInfoDTO;
 
-@InterfaceDesc(value = "活动相关api")
 public interface StudentInfoService {
     /**
      * @description:增加学生信息
