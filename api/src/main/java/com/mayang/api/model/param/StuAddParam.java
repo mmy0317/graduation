@@ -6,9 +6,6 @@ import com.wordnik.swagger.annotations.ApiModel;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-
-//172.0.0.1:9094/SouthEast/student/end/creat?name='mayang',realName='马扬',stuNum=10417114,phone='18851976933',gender=1,weChat='18851976933'
-//age=21,key='212317mayang'
 @Data
 @ApiModel(value="StuAddParam",description="新增学生信息")
 public class StuAddParam {
