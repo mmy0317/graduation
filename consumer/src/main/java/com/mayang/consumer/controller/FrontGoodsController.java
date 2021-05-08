@@ -11,13 +11,14 @@ import com.mayang.api.model.param.GoodsParam;
 import com.mayang.api.model.param.StuParam;
 import com.mayang.api.utils.MyException;
 import com.alibaba.dubbo.common.utils.StringUtils;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Service
+@Controller
 public class FrontGoodsController {
 
     @Reference
