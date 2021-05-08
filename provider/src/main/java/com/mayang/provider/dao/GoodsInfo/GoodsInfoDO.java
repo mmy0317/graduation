@@ -80,4 +80,9 @@ public class GoodsInfoDO {
      */
     private Integer browseNum;
 
+    /**
+     * 商品更新时间
+     */
+    private LocalDateTime goodUpdatetime;
+
 }

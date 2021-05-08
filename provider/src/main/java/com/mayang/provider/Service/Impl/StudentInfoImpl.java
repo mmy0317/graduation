@@ -79,7 +79,6 @@ public class StudentInfoImpl implements StudentInfoService{
     @Override
     public Boolean UpdateInfo(StuInfoDTO stuInfoForUpdateDTO) {
         this.Check(stuInfoForUpdateDTO);
-        //对库中的相同数据进行删除
         StuInfoDO stuInfoForUpdateDO = StudentInfoDaoConvert.INSTANCE.stuDtoToDo(stuInfoForUpdateDTO);
         LambdaQueryWrapper<StuInfoDO> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         stuInfoMapper.delete(lambdaQueryWrapper

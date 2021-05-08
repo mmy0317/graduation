@@ -2,10 +2,13 @@ package com.mayang.api.model.param;
 
 import com.wordnik.swagger.annotations.ApiModel;
 import com.wordnik.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
 import javax.validation.constraints.NotEmpty;
 
 
 @ApiModel(value="StuParam",description="学生信息查询")
+@Data
 public class StuParam {
 
     @ApiModelProperty(value="学生真实姓名")

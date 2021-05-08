@@ -12,7 +12,6 @@ import lombok.experimental.Accessors;
  * <p>
  * 学生信息详情表
  * </p>
- *
  * @author mayang
  * @since 2021-5-7
  */

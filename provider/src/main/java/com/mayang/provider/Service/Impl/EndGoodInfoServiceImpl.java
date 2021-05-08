@@ -21,7 +21,7 @@ public class EndGoodInfoServiceImpl implements EndGoodInfoService {
     GoodsInfoMapper goodsInfoMapper;
 
     @Override
-    public Boolean deleteGoods(Integer goodsNum) {
+    public Boolean deleteGoods(String goodsNum) {
         LambdaQueryWrapper<GoodsInfoDO> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         GoodsInfoDO goodsDelSelInfoDO = goodsInfoMapper.selectOne(lambdaQueryWrapper
                 .eq(GoodsInfoDO::getGoodsNum,goodsNum));
@@ -40,7 +40,7 @@ public class EndGoodInfoServiceImpl implements EndGoodInfoService {
     }
 
     @Override
-    public GoodsInfoDTO selectGoodsInfo(Integer goodsNum) {
+    public GoodsInfoDTO selectGoodsInfo(String goodsNum) {
         LambdaQueryWrapper<GoodsInfoDO> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         GoodsInfoDO goodsSelectInfoDO = goodsInfoMapper.selectOne(lambdaQueryWrapper
                 .eq(GoodsInfoDO::getGoodsNum,goodsNum)

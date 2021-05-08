@@ -17,7 +17,7 @@ public class GoodsInfoDTO {
     private String goodsNum;
 
     /**
-     * 商品状态 1上架 2下架 3审核
+     * 商品状态 1上架 2下架
      */
     private Integer goodStatus;
 
@@ -42,5 +42,10 @@ public class GoodsInfoDTO {
     private LocalDateTime goodEndtime;
 
     private Integer browseNum;
+
+    /**
+     * 商品更新时间
+     */
+    private LocalDateTime goodUpdatetime;
 
 }

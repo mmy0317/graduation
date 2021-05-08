@@ -48,6 +48,9 @@ public class GoodsParam {
     @ApiModelProperty(value="商品下架时间")
     private LocalDateTime goodEndtime;
 
+    @ApiModelProperty(value="商品更新时间")
+    private LocalDateTime goodUpdatetime;
+
     @ApiModelProperty(value="商品浏览次数")
     @NotNull(message="//")
     private Integer browseNum;

@@ -2,7 +2,6 @@ package com.mayang.api.BusinessGoodInfoService;
 
 import com.mayang.api.model.StuInfoDTO.GoodsInfoDTO;
 
-import com.mayang.api.model.param.GoodsParam;
 
 public interface EndGoodInfoService {
     /**
@@ -10,12 +9,12 @@ public interface EndGoodInfoService {
      * @param goodsNum
      * @return Boolean
      */
-    Boolean deleteGoods (Integer goodsNum);
+    Boolean deleteGoods (String goodsNum);
 
     /**
      * @Description:管理员根据商品号查询商品详情
      * @param goodsNum
      * @return GoodsInfoDTO
      */
-    GoodsInfoDTO selectGoodsInfo(Integer goodsNum);
+    GoodsInfoDTO selectGoodsInfo(String goodsNum);
 }

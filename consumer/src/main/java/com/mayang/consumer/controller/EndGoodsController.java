@@ -19,7 +19,7 @@ public class EndGoodsController {
      * @return
      */
     @RequestMapping(value="SouthEast/goods/end/delete",method=RequestMethod.DELETE)
-    public Boolean DeleteGoodsInfo (Integer goodsNum){
+    public Boolean DeleteGoodsInfo (String goodsNum){
         return endGoodInfoService.deleteGoods(goodsNum);
     }
 
@@ -29,7 +29,7 @@ public class EndGoodsController {
      * @return
      */
     @RequestMapping(value="SouthEast/goods/end/select",method=RequestMethod.POST)
-    public GoodsInfoDTO SelectGoodsInfo (Integer goodsNum){
+    public GoodsInfoDTO SelectGoodsInfo (String goodsNum){
         GoodsInfoDTO goodsInfoDTO = endGoodInfoService.selectGoodsInfo(goodsNum);
         return goodsInfoDTO;
     }
