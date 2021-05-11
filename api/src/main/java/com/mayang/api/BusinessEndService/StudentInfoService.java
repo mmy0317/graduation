@@ -10,12 +10,6 @@ public interface StudentInfoService {
      */
     Boolean AddInfo(StuInfoDTO stuInfoDTO);
 
-//    /**
-//     * @description:获取活码分页 传回一个StuInfoVO类型的长度为10的列表
-//     * @param stuParam
-//     * @return
-//     */
-//    List<StuInfoDTO> InfoPage(StuParam stuParam);
 
     /**
      * @description:管理员后台根据学号查询信息
@@ -38,7 +32,6 @@ public interface StudentInfoService {
      * @return
      */
     Boolean UpdateInfo(StuInfoDTO stuInfoDTO);
-
 
 
 }

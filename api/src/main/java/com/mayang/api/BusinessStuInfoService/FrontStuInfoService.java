@@ -17,4 +17,12 @@ public interface FrontStuInfoService {
      * @return
      */
     Boolean StuUpdate(StuInfoDTO stuInfoDTO);
+
+    /**
+     * @Description 学生登录
+     * @param stuNum
+     * @param key
+     * @return
+     */
+    Boolean StuLogin(Integer stuNum , String key);
 }

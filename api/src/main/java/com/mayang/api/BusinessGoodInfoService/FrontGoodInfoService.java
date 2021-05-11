@@ -2,6 +2,8 @@ package com.mayang.api.BusinessGoodInfoService;
 
 import com.mayang.api.model.StuInfoDTO.GoodsInfoDTO;
 
+import java.util.List;
+
 public interface FrontGoodInfoService {
 
     /**
@@ -32,7 +34,13 @@ public interface FrontGoodInfoService {
      */
     GoodsInfoDTO StuSelectSelfGood (Integer stuNum , String goodsNum);
 
-    //todo:查找自己名下的商品的信息(hash)
+
+    /**
+     * @Description 学生查看自己名下的所有上架商品
+     * @param stuNum
+     * @return
+     */
+    List<GoodsInfoDTO> StuSelectAllGoods (Integer stuNum);
 
 
 }

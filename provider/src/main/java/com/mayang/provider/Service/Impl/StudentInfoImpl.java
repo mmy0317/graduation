@@ -45,7 +45,12 @@ public class StudentInfoImpl implements StudentInfoService{
     @Override
     public StuInfoDTO GetInfoByNum(Integer stuNum) {
         LambdaQueryWrapper<StuInfoDO> lambdaQueryWrapper = new LambdaQueryWrapper<>();
-        StuInfoDO stuSelectByNumInfoDO = stuInfoMapper.selectOne(lambdaQueryWrapper.eq(StuInfoDO::getStuNum, stuNum));
+        StuInfoDO stuSelectByNumInfoDO = stuInfoMapper.selectOne(lambdaQueryWrapper
+                .eq(StuInfoDO::getStuNum, stuNum));
+        //后台能查询到即便离校的学生的信息
+        if (stuSelectByNumInfoDO==null){
+            throw new MyException("输入的学号有误");
+        }
         StuInfoDTO stuSelectByNumInfoDTO = StudentInfoDaoConvert.INSTANCE.stuDoToDto(stuSelectByNumInfoDO);
         return stuSelectByNumInfoDTO;
     }

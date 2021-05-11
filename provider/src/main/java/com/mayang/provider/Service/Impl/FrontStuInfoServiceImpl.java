@@ -49,6 +49,25 @@ public class FrontStuInfoServiceImpl implements FrontStuInfoService {
         return false;
     }
 
+    @Override
+    public Boolean StuLogin(Integer stuNum, String key) {
+        LambdaQueryWrapper<StuInfoDO> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        StuInfoDO stuloginInfoDO = stuInfoMapper.selectOne(lambdaQueryWrapper
+                .eq(StuInfoDO::getStuNum,stuNum)
+                .eq(StuInfoDO::getStuStatus,StuStatus.READING.getCode()));//在读的学生才能进入系统
+        if (stuloginInfoDO==null){
+            throw new NullPointerException("该学生没有注册或未处于在读状态");
+        }
+        if (stuloginInfoDO.getKey()==null){
+            throw new MyException("该用户信息有误");
+        }
+        if (stuloginInfoDO.getKey()!=key){
+            return false;
+        }
+        return true;
+    }
+
+
     /**
      * 对于stuInfoDTO数据的一些判定
      * @param stuInfoDTO

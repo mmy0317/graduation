@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -81,10 +82,20 @@ public class FrontGoodsController {
      * @return
      */
     @RequestMapping(value="SouthEast/goods/front/selectone",method=RequestMethod.POST)
-    public GoodsInfoDTO SelectOneGoods(StuParam stuParam,String goodsNum){
+    public GoodsInfoDTO SelectOneGood(StuParam stuParam,String goodsNum){
         Integer stuNum = stuParam.getStuNum();
         GoodsInfoDTO goodsInfoDTO = frontGoodInfoService.StuSelectSelfGood(stuNum, goodsNum);
         return goodsInfoDTO;
+    }
+
+    /**
+     * 学生查看自己名下的所有上架商品
+     * @param stuNum
+     * @return
+     */
+    @RequestMapping(value="SouthEast/goods/front/selectall",method=RequestMethod.GET)
+    public List<GoodsInfoDTO> SelectAllGoods(Integer stuNum){
+        return frontGoodInfoService.StuSelectAllGoods(stuNum);
     }
 
 }

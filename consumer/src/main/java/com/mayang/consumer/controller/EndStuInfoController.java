@@ -54,7 +54,6 @@ public class EndStuInfoController {
      */
     @RequestMapping(value="SouthEast/student/end/selectbynum",method=RequestMethod.GET)
     public StuInfoDTO selectInfo(Integer stuNum){
-        //todo:写一个result类用于返回数据
         StuInfoDTO stuInfoDTO = studentInfoService.GetInfoByNum(stuNum);
         return stuInfoDTO;
     }

@@ -12,12 +12,20 @@ import com.mayang.provider.dao.GoodsInfo.GoodsInfoDO;
 import com.mayang.provider.dao.mapper.GoodsInfoMapper;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class FrontGoodInfoServiceImpl implements FrontGoodInfoService {
     @Resource
     GoodsInfoMapper goodsInfoMapper;
 
+    /**
+     * @Decription  学生上架商品
+     * @param goodsInfoDTO
+     * @return
+     */
     @Override
     public Boolean StuAddGoods(GoodsInfoDTO goodsInfoDTO) {
         if (goodsInfoDTO==null){
@@ -31,6 +39,11 @@ public class FrontGoodInfoServiceImpl implements FrontGoodInfoService {
         return false;
     }
 
+    /**
+     * @Decription 学生下架自己的商品
+     * @param goodsNum
+     * @return
+     */
     @Override
     public Boolean StuDeleteGoods(String goodsNum) {
         LambdaQueryWrapper<GoodsInfoDO> lambdaQueryWrapper = new LambdaQueryWrapper<>();
@@ -47,6 +60,11 @@ public class FrontGoodInfoServiceImpl implements FrontGoodInfoService {
         return false;
     }
 
+    /**
+     * @Decription 学生更新自己的商品
+     * @param goodsInfoDTO
+     * @return
+     */
     @Override
     public Boolean StuUpdateGoods(GoodsInfoDTO goodsInfoDTO) {
         String goodsNum = goodsInfoDTO.getGoodsNum();
@@ -67,6 +85,11 @@ public class FrontGoodInfoServiceImpl implements FrontGoodInfoService {
         return false;
     }
 
+    /**
+     * @Decription 学生查看自己上架的某个商品的详情
+     * @param stuNum
+     * @return
+     */
     @Override
     public GoodsInfoDTO StuSelectSelfGood(Integer stuNum, String goodsNum) {
         LambdaQueryWrapper<GoodsInfoDO> lambdaQueryWrapper = new LambdaQueryWrapper<>();
@@ -76,5 +99,29 @@ public class FrontGoodInfoServiceImpl implements FrontGoodInfoService {
                 .ne(GoodsInfoDO::getGoodStatus,GoodsStatus.GOODS_DOWN.getCode() ));
         GoodsInfoDTO goodsSelectOneInfoDTO = GoodsInfoDaoConvert.INSTANCE.goodsDoToDto(goodsSelectOneInfoDO);
         return goodsSelectOneInfoDTO;
+    }
+
+    /**
+     * @Description 学生查看自己名下的所有上架商品
+     * @param stuNum
+     * @return
+     */
+    @Override
+    public List<GoodsInfoDTO> StuSelectAllGoods(Integer stuNum) {
+        //列表用于获取数据
+        List<GoodsInfoDO> selectAllDOList=new ArrayList<>();
+        //从数据库取数据
+        selectAllDOList=goodsInfoMapper.selectList(Wrappers.<GoodsInfoDO>lambdaQuery()
+                .eq(GoodsInfoDO::getGoodStatus, GoodsStatus.GOODS_IN.getCode())
+                .eq(GoodsInfoDO::getStuNum, stuNum));
+        //数据转化 使用stream()流方法 jdk8新功能
+        if (selectAllDOList == null) {
+            throw new NullPointerException("您没有任何上架商品");
+        } else {
+            List<GoodsInfoDTO> selectAllDTOList=selectAllDOList.stream()
+                    .map(selectAllDO -> GoodsInfoDaoConvert.INSTANCE.goodsDoToDto(selectAllDO))
+                    .collect(Collectors.toList());
+            return selectAllDTOList;
+        }
     }
 }
