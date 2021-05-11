@@ -31,7 +31,7 @@ public class EndStuInfoController {
      * @param stuNum
      * @return
      */
-    @RequestMapping(value="SouthEast/student/end/delete",method=RequestMethod.DELETE)
+    @RequestMapping(value="SouthEast/student/end/delete",method=RequestMethod.GET)
     public Boolean deleteStuInfo(Integer stuNum){
         return studentInfoService.DeleteInfo(stuNum);
     }
