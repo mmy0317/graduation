@@ -15,5 +15,5 @@ public class EndUserDTO implements Serializable {
     /**
      * 后台管理员密码
      */
-    private String userPassword;
+    private String password;
 }

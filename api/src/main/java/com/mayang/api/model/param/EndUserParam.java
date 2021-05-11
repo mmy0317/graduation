@@ -16,5 +16,5 @@ public class EndUserParam {
 
     @ApiModelProperty(value="后台管理员密码")
     @NotNull(message="密码不能为空")
-    private String userPassword;
+    private String password;
 }

@@ -70,6 +70,7 @@
             <version>1.2.0.Final</version>
         </dependency>
 
+
         <!-- mybatis plus依赖注入-->
         <dependency>
             <groupId>com.baomidou</groupId>
@@ -91,6 +92,12 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>1.4.1.Final</version>
+            <scope>compile</scope>
         </dependency>
 
     </dependencies>

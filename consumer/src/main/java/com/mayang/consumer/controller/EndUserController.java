@@ -35,9 +35,9 @@ public class EndUserController {
      * @param endUserParam
      * @return
      */
-    //127.0.0.1:9094/SouthEast/user/end/add?userId=mayang&password=mayang
-    //显示convert找不到
-    @RequestMapping(value="SouthEast/user/end/add",method=RequestMethod.POST)
+    //127.0.0.1:9094/SouthEast/user/end/add?userId=mayang&password=miaomiao
+    //true
+    @RequestMapping(value="SouthEast/user/end/add")
     public Boolean EndUserAdd(EndUserParam endUserParam){
         EndUserDTO endUserDTO =StudentInfoVOConvert.INSTANCE.endUserParamToDto(endUserParam);
         return endUserService.EndUserAdd(endUserDTO);

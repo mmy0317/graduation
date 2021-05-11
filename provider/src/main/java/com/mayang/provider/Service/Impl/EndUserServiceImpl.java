@@ -25,10 +25,10 @@ public class EndUserServiceImpl implements EndUserService {
         if (endUserLoginDO==null){
             throw new NullPointerException("该管理员账号并未存在");
         }
-        if (endUserLoginDO.getUserPassword()==null){
+        if (endUserLoginDO.getPassword()==null){
             return false;
         }
-        if (endUserLoginDO.getUserPassword()!=password){
+        if (endUserLoginDO.getPassword()!=password){
             return false;
         }
 
