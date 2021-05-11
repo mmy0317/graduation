@@ -1,6 +1,6 @@
 package com.mayang.api.BusinessGoodInfoService;
 
-import com.mayang.api.model.StuInfoDTO.GoodsInfoDTO;
+import com.mayang.api.model.InfoDTO.GoodsInfoDTO;
 
 import java.util.List;
 

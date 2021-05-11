@@ -3,7 +3,7 @@ package com.mayang.consumer.controller;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.mayang.api.BusinessEndService.EndUserService;
 import com.mayang.api.convert.StudentInfoVOConvert;
-import com.mayang.api.model.StuInfoDTO.EndUserDTO;
+import com.mayang.api.model.InfoDTO.EndUserDTO;
 import com.mayang.api.model.param.EndUserParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

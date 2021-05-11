@@ -1,11 +1,10 @@
 package com.mayang.consumer.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.alibaba.dubbo.config.annotation.Service;
 import com.mayang.api.BusinessGoodInfoService.FrontGoodInfoService;
 import com.mayang.api.convert.GoodInfoVOConvert;
 import com.mayang.api.model.Enum.GoodsStatus;
-import com.mayang.api.model.StuInfoDTO.GoodsInfoDTO;
+import com.mayang.api.model.InfoDTO.GoodsInfoDTO;
 import com.mayang.api.model.param.GoodsAddParam;
 import com.mayang.api.model.param.GoodsParam;
 import com.mayang.api.model.param.StuParam;

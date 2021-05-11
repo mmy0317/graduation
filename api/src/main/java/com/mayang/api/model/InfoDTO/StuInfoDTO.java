@@ -1,4 +1,4 @@
-package com.mayang.api.model.StuInfoDTO;
+package com.mayang.api.model.InfoDTO;
 
 import lombok.Data;
 
@@ -35,12 +35,12 @@ public class StuInfoDTO implements Serializable {
     /**
      * 学生状态  1录取 2在校 3离校/毕业/辞退
      */
-    private Integer status;
+    private Integer stuStatus;
 
-    private String dorm;
+    private String stuDorm;
 
     private Integer qqNUM;
 
-    private String pic;
+    private String stuPic;
 
 }

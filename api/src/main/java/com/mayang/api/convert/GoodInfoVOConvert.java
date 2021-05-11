@@ -1,6 +1,6 @@
 package com.mayang.api.convert;
 
-import com.mayang.api.model.StuInfoDTO.GoodsInfoDTO;
+import com.mayang.api.model.InfoDTO.GoodsInfoDTO;
 import com.mayang.api.model.param.GoodsAddParam;
 import com.mayang.api.model.param.GoodsParam;
 import org.mapstruct.Mapper;

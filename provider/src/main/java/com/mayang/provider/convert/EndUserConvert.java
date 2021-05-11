@@ -1,6 +1,6 @@
 package com.mayang.provider.convert;
 
-import com.mayang.api.model.StuInfoDTO.EndUserDTO;
+import com.mayang.api.model.InfoDTO.EndUserDTO;
 import com.mayang.provider.dao.EndUserInfo.EndUserDO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

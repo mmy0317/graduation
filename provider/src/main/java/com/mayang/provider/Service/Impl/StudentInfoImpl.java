@@ -5,7 +5,7 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.mayang.api.BusinessEndService.StudentInfoService;
 import com.mayang.api.model.Enum.StuStatus;
-import com.mayang.api.model.StuInfoDTO.StuInfoDTO;
+import com.mayang.api.model.InfoDTO.StuInfoDTO;
 import com.mayang.provider.convert.StudentInfoDaoConvert;
 import com.mayang.provider.dao.StudentInfo.StuInfoDO;
 import com.mayang.api.utils.MyException;
@@ -44,9 +44,7 @@ public class StudentInfoImpl implements StudentInfoService{
 
     @Override
     public StuInfoDTO GetInfoByNum(Integer stuNum) {
-        LambdaQueryWrapper<StuInfoDO> lambdaQueryWrapper = new LambdaQueryWrapper<>();
-        StuInfoDO stuSelectByNumInfoDO = stuInfoMapper.selectOne(lambdaQueryWrapper
-                .eq(StuInfoDO::getStuNum, stuNum));
+        StuInfoDO stuSelectByNumInfoDO = stuInfoMapper.selectStuInfoByStuId(stuNum);
         //后台能查询到即便离校的学生的信息
         if (stuSelectByNumInfoDO==null){
             throw new MyException("输入的学号有误");

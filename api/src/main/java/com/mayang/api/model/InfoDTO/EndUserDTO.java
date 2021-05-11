@@ -1,4 +1,4 @@
-package com.mayang.api.model.StuInfoDTO;
+package com.mayang.api.model.InfoDTO;
 
 import lombok.Data;
 

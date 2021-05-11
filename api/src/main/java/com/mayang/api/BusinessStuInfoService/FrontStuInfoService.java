@@ -1,6 +1,6 @@
 package com.mayang.api.BusinessStuInfoService;
 
-import com.mayang.api.model.StuInfoDTO.StuInfoDTO;
+import com.mayang.api.model.InfoDTO.StuInfoDTO;
 
 public interface FrontStuInfoService {
 

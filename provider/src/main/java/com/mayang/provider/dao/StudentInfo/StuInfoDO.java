@@ -30,7 +30,7 @@ public class StuInfoDO {
     /**
      * 昵称
      */
-    private Integer name;
+    private String name;
 
     /**
      * 真实姓名
@@ -65,7 +65,7 @@ public class StuInfoDO {
     /**
      * 手机号
      */
-    private Integer phone;
+    private String phone;
 
     /**
      * 微信号
@@ -75,7 +75,7 @@ public class StuInfoDO {
     /**
      * qq号
      */
-    private Integer qqNum;
+    private String qqNum;
 
     /**
      * 年龄
@@ -100,7 +100,7 @@ public class StuInfoDO {
     /**
      * 头像链接
      */
-    private String pic;
+    private String stuPic;
 
 
 

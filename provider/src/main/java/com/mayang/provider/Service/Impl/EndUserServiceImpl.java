@@ -4,7 +4,7 @@ package com.mayang.provider.Service.Impl;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.mayang.api.BusinessEndService.EndUserService;
-import com.mayang.api.model.StuInfoDTO.EndUserDTO;
+import com.mayang.api.model.InfoDTO.EndUserDTO;
 
 import com.mayang.provider.convert.EndUserConvert;
 import com.mayang.provider.dao.EndUserInfo.EndUserDO;

@@ -1,8 +1,7 @@
 package com.mayang.api.BusinessEndService;
 
 
-import com.mayang.api.model.StuInfoDTO.EndUserDTO;
-import com.mayang.api.model.param.EndUserParam;
+import com.mayang.api.model.InfoDTO.EndUserDTO;
 
 public interface EndUserService {
 

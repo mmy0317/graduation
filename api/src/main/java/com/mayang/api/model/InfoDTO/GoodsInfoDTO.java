@@ -1,13 +1,9 @@
-package com.mayang.api.model.StuInfoDTO;
+package com.mayang.api.model.InfoDTO;
 
-import com.wordnik.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 @Data
 public class GoodsInfoDTO implements Serializable {

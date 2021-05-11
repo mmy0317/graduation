@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.mayang.api.BusinessStuInfoService.FrontStuInfoService;
 import com.mayang.api.model.Enum.StuStatus;
-import com.mayang.api.model.StuInfoDTO.StuInfoDTO;
+import com.mayang.api.model.InfoDTO.StuInfoDTO;
 import com.mayang.api.utils.MyException;
 import com.mayang.provider.convert.StudentInfoDaoConvert;
 import com.mayang.provider.dao.StudentInfo.StuInfoDO;
