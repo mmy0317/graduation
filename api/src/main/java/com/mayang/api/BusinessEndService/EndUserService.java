@@ -1,5 +1,9 @@
 package com.mayang.api.BusinessEndService;
 
+
+import com.mayang.api.model.StuInfoDTO.EndUserDTO;
+import com.mayang.api.model.param.EndUserParam;
+
 public interface EndUserService {
 
     /**
@@ -13,11 +17,10 @@ public interface EndUserService {
 
     /**
      * 新增后台管理员
-     * @param userId
-     * @param password
+     * @param endUserParam
      * @return
      */
-    Boolean EndUserAdd(String userId , String password);
+    Boolean EndUserAdd(EndUserDTO endUserDTO);
 
 
 }

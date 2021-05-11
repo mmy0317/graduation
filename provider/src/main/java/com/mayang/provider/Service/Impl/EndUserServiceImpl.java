@@ -1,14 +1,19 @@
 package com.mayang.provider.Service.Impl;
 
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.mayang.api.BusinessEndService.EndUserService;
+import com.mayang.api.model.StuInfoDTO.EndUserDTO;
+
+import com.mayang.provider.convert.EndUserConvert;
 import com.mayang.provider.dao.EndUserInfo.EndUserDO;
 import com.mayang.provider.dao.mapper.EndUserMapper;
-import org.springframework.util.StringUtils;
+
 
 import javax.annotation.Resource;
 
+@Service
 public class EndUserServiceImpl implements EndUserService {
 
     @Resource
@@ -20,23 +25,29 @@ public class EndUserServiceImpl implements EndUserService {
         if (endUserLoginDO==null){
             throw new NullPointerException("该管理员账号并未存在");
         }
-        if (StringUtils.isEmpty(endUserLoginDO.getUserPassword())||endUserLoginDO.getUserPassword()!=password){
+        if (endUserLoginDO.getUserPassword()==null){
             return false;
         }
+        if (endUserLoginDO.getUserPassword()!=password){
+            return false;
+        }
+
         return true;
     }
 
 
     @Override
-    public Boolean EndUserAdd(String userId, String password) {
-        EndUserDO endUserAddInfoDO = null;
-        endUserAddInfoDO
-                .setUserId(userId)
-                .setUserPassword(password);
-        Integer add = endUserMapper.insert(endUserAddInfoDO);
+    public Boolean EndUserAdd(EndUserDTO endUserDTO) {
+        if (endUserDTO==null){
+            throw new NullPointerException("参数为空");
+        }
+        EndUserDO endUserInsertDO =EndUserConvert.INSTANCE.endUserDtoToDo(endUserDTO);
+        Integer add = endUserMapper.insert(endUserInsertDO);
         if (add<=0){
             return false;
         }
         return true;
     }
+
+
 }
