@@ -6,6 +6,7 @@ import com.mayang.api.model.param.EndUserParam;
 import com.mayang.api.model.param.StuAddParam;
 import com.mayang.api.model.param.StuParam;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 
 

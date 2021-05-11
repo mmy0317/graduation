@@ -22,6 +22,8 @@ public class EndUserController {
      * @param password
      * @return
      */
+    //127.0.0.1:9094/SouthEast/user/end/login?userId=mayang&password=mayang
+    //返回值 false 应该返回true
     @RequestMapping(value="SouthEast/user/end/login",method=RequestMethod.GET)
     @ResponseBody
     public Boolean EndUserLogin(String userId, String password){
@@ -33,7 +35,9 @@ public class EndUserController {
      * @param endUserParam
      * @return
      */
-    @RequestMapping(value="SouthEast/user/end/add",method=RequestMethod.GET)
+    //127.0.0.1:9094/SouthEast/user/end/add?userId=mayang&password=mayang
+    //显示convert找不到
+    @RequestMapping(value="SouthEast/user/end/add",method=RequestMethod.POST)
     public Boolean EndUserAdd(EndUserParam endUserParam){
         EndUserDTO endUserDTO =StudentInfoVOConvert.INSTANCE.endUserParamToDto(endUserParam);
         return endUserService.EndUserAdd(endUserDTO);
