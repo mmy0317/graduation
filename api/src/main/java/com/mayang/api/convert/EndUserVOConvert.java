@@ -6,8 +6,9 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 @Mapper
-public interface EndUserFrontConvert {
-    EndUserFrontConvert INSTANCE =Mappers.getMapper(EndUserFrontConvert.class);
+public interface EndUserVOConvert {
 
-    EndUserDTO endUserParamToDto(EndUserParam endUserParam);
+    EndUserVOConvert INSTANCE =Mappers.getMapper(EndUserVOConvert.class);
+
+    EndUserDTO endUserParamToDto (EndUserParam endUserParam);
 }

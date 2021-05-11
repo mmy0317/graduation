@@ -17,7 +17,7 @@ public interface EndUserService {
 
     /**
      * 新增后台管理员
-     * @param endUserParam
+     * @param endUserDTO
      * @return
      */
     Boolean EndUserAdd(EndUserDTO endUserDTO);
