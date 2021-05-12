@@ -29,6 +29,7 @@ public class FrontGoodsController {
      * @param goodsAddParam
      * @return
      */
+    //127.0.0.1:9094/SouthEast/goods/front/creat?
     @RequestMapping(value="SouthEast/goods/front/creat",method=RequestMethod.GET)
     public Boolean CreatGoods(GoodsAddParam goodsAddParam , StuParam stuParam){
         GoodsInfoDTO goodsInsertInfoDTO = GoodInfoVOConvert.INSTANCE.addParamToDto(goodsAddParam);

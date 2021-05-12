@@ -1,5 +1,7 @@
 package com.mayang.api.model.InfoDTO;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -7,40 +9,80 @@ import java.io.Serializable;
 @Data
 public class StuInfoDTO implements Serializable {
 
+    private Integer id;
+
+    /**
+     * 昵称
+     */
     private String name;
 
+    /**
+     * 真实姓名
+     */
     private String realName;
 
+    /**
+     * 学号
+     */
     private Integer stuNum;
 
-    private  String phone;
-
+    /**
+     * 班级
+     */
     private String classRoom;
 
+    /**
+     * 院系
+     */
     private String department;
 
     /**
-     * 性别 1男 2 女 3 秘密
+     * 性别
      */
     private Integer gender;
 
+    /**
+     * 个签
+     */
     private String personalWord;
 
-    private String weChat;
-
-    private Integer age;
-
-    private String key;
+    /**
+     * 手机号
+     */
+    private String phone;
 
     /**
-     * 学生状态  1录取 2在校 3离校/毕业/辞退
+     * 微信号
+     */
+    private String wechat;
+
+    /**
+     * qq号
+     */
+    private String qqNum;
+
+    /**
+     * 年龄
+     */
+    private Integer age;
+
+    /**
+     * 密码
+     */
+    private String password;
+
+    /**
+     * 学生状态
      */
     private Integer stuStatus;
 
-    private String stuDorm;
+    /**
+     * 学生宿舍
+     */
+    private String stuDrom;
 
-    private Integer qqNUM;
-
+    /**
+     * 头像链接
+     */
     private String stuPic;
-
 }

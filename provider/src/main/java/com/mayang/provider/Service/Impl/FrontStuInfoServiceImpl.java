@@ -27,7 +27,7 @@ public class FrontStuInfoServiceImpl implements FrontStuInfoService {
             stuInfoDTO.setName(stuInfoDTO.getRealName());
         }
         StuInfoDO stuInfoDO=StudentInfoDaoConvert.INSTANCE.stuDtoToDo(stuInfoDTO);
-        Integer i=stuInfoMapper.insert(stuInfoDO);
+        Integer i = stuInfoMapper.insert(stuInfoDO);
         if (i > 0) {
             return true;
         }
@@ -58,10 +58,10 @@ public class FrontStuInfoServiceImpl implements FrontStuInfoService {
         if (stuloginInfoDO==null){
             throw new NullPointerException("该学生没有注册或未处于在读状态");
         }
-        if (stuloginInfoDO.getKey()==null){
+        if (stuloginInfoDO.getPassword()==null){
             throw new MyException("该用户信息有误");
         }
-        if (stuloginInfoDO.getKey()!=key){
+        if (stuloginInfoDO.getPassword()!=key){
             return false;
         }
         return true;
@@ -78,22 +78,28 @@ public class FrontStuInfoServiceImpl implements FrontStuInfoService {
             throw new NullPointerException("参数不能为空");
         }
         //对于数据库进行一个查重 ,看看当前用户是否已经注册
-        LambdaQueryWrapper<StuInfoDO> lambdaQueryWrapper = new LambdaQueryWrapper<>();
-        StuInfoDO stuInfoDOFindOne = stuInfoMapper.selectOne(lambdaQueryWrapper
-                .eq(StuInfoDO::getStuNum, stuInfoDTO.getStuNum())
-                .ne(StuInfoDO::getStuStatus, StuStatus.GRADUATION.getCode()));
+//        LambdaQueryWrapper<StuInfoDO> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+//        StuInfoDO stuInfoDOFindOne = stuInfoMapper.selectOne(lambdaQueryWrapper
+//                .eq(StuInfoDO::getStuNum, stuInfoDTO.getStuNum())
+//                .ne(StuInfoDO::getStuStatus, StuStatus.GRADUATION.getCode()));
+        StuInfoDO stuInfoDOFindOne = stuInfoMapper
+                .selectStuInfoForCheck(stuInfoDTO.getStuNum(),StuStatus.GRADUATION.getCode());
         if (stuInfoDOFindOne != null) {
             throw new MyException("该用户已存在");
         }
+
         //其余判断
         if (StringUtils.isEmpty(stuInfoDTO.getClassRoom())){
             String classroom = String.valueOf(stuInfoDTO.getStuNum()).substring(5,6);//获取班级
-            stuInfoDTO.setClassRoom(classroom+"班");
+            stuInfoDTO.setClassRoom(classroom);
         }
         ////////由于不了解学校对于院系的设定 , 因此此处暂不做学号对于院系中文名称的回填//////
         if (StringUtils.isEmpty(stuInfoDTO.getDepartment())){
             String department = String.valueOf(stuInfoDTO.getStuNum()).substring(0,3);//获取院系
-            stuInfoDTO.setDepartment(department+"系");
+            stuInfoDTO.setDepartment(department);
+        }
+        if (StringUtils.isEmpty(stuInfoDTO.getStuPic())){
+            stuInfoDTO.setStuPic("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic2.zhimg.com%2F50%2Fv2-6afa72220d29f045c15217aa6b275808_hd.jpg&refer=http%3A%2F%2Fpic2.zhimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1622885197&t=fbfa3e0ca0a494bdb735ce712ebab9ad");
         }
         if (StringUtils.isEmpty(stuInfoDTO.getRealName())){
             throw new IllegalArgumentException("姓名参数错误");
@@ -101,7 +107,7 @@ public class FrontStuInfoServiceImpl implements FrontStuInfoService {
         if (stuInfoDTO.getStuNum()==null){
             throw new IllegalArgumentException("学号参数错误");
         }
-        if (StringUtils.isEmpty(stuInfoDTO.getKey())|| StringUtils.isBlank(stuInfoDTO.getKey())){
+        if (StringUtils.isEmpty(stuInfoDTO.getPassword())|| StringUtils.isBlank(stuInfoDTO.getPassword())){
             throw new IllegalArgumentException("密码参数错误");
         }
     }

@@ -49,13 +49,14 @@ public class StuAddParam implements Serializable {
 
     @ApiModelProperty(value="学生账号密码")
     @NotEmpty(message="学生密码")
-    private String key;
+    private String password;
 
 //    @ApiModelProperty(value="学生状态  1录取 2在校 3离校/毕业/辞退")
 //    @NotEmpty(message="学生状态不能为空")
 //    private Integer status;
 
     @ApiModelProperty(value="学生宿舍")
+    @NotEmpty(message="学生宿舍不能为空")
     private String dorm;
 
     @ApiModelProperty(value="学生qq号")

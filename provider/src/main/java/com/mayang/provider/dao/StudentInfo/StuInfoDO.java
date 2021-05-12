@@ -20,7 +20,8 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @TableName("stu_main_info")
 @Data
-public class StuInfoDO {
+public class
+StuInfoDO {
     /**
      * 主键id
      */
@@ -85,7 +86,7 @@ public class StuInfoDO {
     /**
      * 密码
      */
-    private String key;
+    private String password;
 
     /**
      * 学生状态
@@ -105,3 +106,5 @@ public class StuInfoDO {
 
 
 }
+
+

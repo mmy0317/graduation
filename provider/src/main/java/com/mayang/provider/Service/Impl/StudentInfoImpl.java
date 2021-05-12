@@ -129,7 +129,8 @@ public class StudentInfoImpl implements StudentInfoService{
         if (stuInfoDTO.getStuNum()==null){
             throw new IllegalArgumentException("学号参数错误");
         }
-        if (StringUtils.isEmpty(stuInfoDTO.getKey())|| StringUtils.isBlank(stuInfoDTO.getKey())){
+        if (StringUtils.isEmpty(stuInfoDTO.getPassword())|| StringUtils.isBlank(stuInfoDTO.getPassword()
+        )){
             throw new IllegalArgumentException("密码参数错误");
         }
     }

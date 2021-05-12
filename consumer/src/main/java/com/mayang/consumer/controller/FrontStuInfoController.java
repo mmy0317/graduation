@@ -20,6 +20,7 @@ public class FrontStuInfoController {
      * @param addParam
      * @return
      */
+    //127.0.0.1:9094/SouthEast/student/front/creat?name=mayang&realName=马扬&stuNum=17114&phone=18851976933&gender=1&weChat=18851976933&age=21&key=000317&dorm=桃三403
     @RequestMapping(value="SouthEast/student/front/creat",method=RequestMethod.GET)
     public Boolean CreatInfoByStu(StuAddParam addParam){
         StuInfoDTO stuInfoForInsertDTO = StudentInfoVOConvert.INSTANCE.addParamToDto(addParam);
