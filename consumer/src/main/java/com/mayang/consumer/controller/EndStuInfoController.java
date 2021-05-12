@@ -21,6 +21,7 @@ public class EndStuInfoController {
      * @param stuAddParam
      * @return
      */
+    //todo:暂时不做/建议改成批量增加
     @RequestMapping(value="SouthEast/student/end/creat",method=RequestMethod.GET)
     public Boolean creatStuInfo(StuAddParam stuAddParam){
         StuInfoDTO stuInfoForInsertDTO = StudentInfoVOConvert.INSTANCE.addParamToDto(stuAddParam);
@@ -42,6 +43,7 @@ public class EndStuInfoController {
      * @param addParam
      * @return
      */
+    //todo:暂时不做/建议改成批量更新
     @RequestMapping(value="SouthEast/student/end/update",method=RequestMethod.POST)
     public Boolean updateStuInfo(StuAddParam addParam){
         StuInfoDTO stuInfoForUpdateDTO =StudentInfoVOConvert.INSTANCE.addParamToDto(addParam);
@@ -53,7 +55,7 @@ public class EndStuInfoController {
      * @param stuNum
      * @return
      */
-    //127.0.0.1:9094/SouthEast/student/end/selectbynum?stuNum=17116
+    //127.0.0.1:9094/SouthEast/student/end/selectbynum?stuNum=10417114
     //结果:成功
     @RequestMapping(value="SouthEast/student/end/selectbynum",method=RequestMethod.GET)
     @ResponseBody

@@ -13,9 +13,9 @@ import java.util.Date;
 public class GoodsAddParam implements Serializable {
 
 
-    @ApiModelProperty(value="商品编号")
-    @NotNull(message="商品编号不能为空")
-    private String goodsNum;
+//    @ApiModelProperty(value="商品编号")
+//    @NotNull(message="商品编号不能为空")
+//    private String goodsNum;
 
 //    @ApiModelProperty(value="商品状态 1上架 2下架 3审核")
 //    @NotNull(message="商品状态不能为空")
@@ -41,12 +41,11 @@ public class GoodsAddParam implements Serializable {
     @NotNull(message="商品介绍文字不能为空")
     private String goodItems;
 
-//    @ApiModelProperty(value="商品上架时间")
-//    @NotNull(message="商品上架时间不能为空")
-//    private Date goodStarttime;
-//
-//    @ApiModelProperty(value="商品下架时间")
-//    private Date goodEndtime;
+    @ApiModelProperty(value="商品上架时间")
+    private Date goodStarttime;
+
+    @ApiModelProperty(value="商品下架时间")
+    private Date goodEndtime;
 
 //    @ApiModelProperty(value="商品浏览次数")
 //    @NotNull(message="//")

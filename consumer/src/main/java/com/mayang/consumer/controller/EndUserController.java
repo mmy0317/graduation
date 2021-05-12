@@ -23,7 +23,7 @@ public class EndUserController {
      * @return
      */
     //127.0.0.1:9094/SouthEast/user/end/login?userId=mayang&password=mayang
-    //返回值 false 应该返回true
+    //todo:能跑 业务逻辑问题
     @RequestMapping(value="SouthEast/user/end/login",method=RequestMethod.GET)
     @ResponseBody
     public Boolean EndUserLogin(String userId, String password){

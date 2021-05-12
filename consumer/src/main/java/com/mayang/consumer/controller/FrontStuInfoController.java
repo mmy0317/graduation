@@ -20,7 +20,9 @@ public class FrontStuInfoController {
      * @param addParam
      * @return
      */
-    //127.0.0.1:9094/SouthEast/student/front/creat?name=mayang&realName=马扬&stuNum=17114&phone=18851976933&gender=1&weChat=18851976933&age=21&key=000317&dorm=桃三403
+    //127.0.0.1:9094/SouthEast/student/front/creat?name= &realName= &stuNum= &gender= &personalWord= &phone= &wechat= &qqNum= &age= &password= &stuStatus= &stuDrom=
+    //eg : 127.0.0.1:9094/SouthEast/student/front/creat?name=长风&realName=马扬&stuNum=10417114&gender=1&personalWord=计算机一班班草吴世豪&phone=18851976933&wechat=m18851976933&qqNum=1659254531&age=21&password=leimiaomiao&stuStatus=2&stuDrom=桃园三舍403
+    //return true
     @RequestMapping(value="SouthEast/student/front/creat",method=RequestMethod.GET)
     public Boolean CreatInfoByStu(StuAddParam addParam){
         StuInfoDTO stuInfoForInsertDTO = StudentInfoVOConvert.INSTANCE.addParamToDto(addParam);
@@ -32,7 +34,8 @@ public class FrontStuInfoController {
      * @param addParam
      * @return
      */
-    @RequestMapping(value="SouthEast/student/front/update",method=RequestMethod.POST)
+    //todo:逻辑出错,显示该用户已存在
+    @RequestMapping(value="SouthEast/student/front/update",method=RequestMethod.GET)
     public Boolean UpdateInfoByStu(StuAddParam addParam){
         StuInfoDTO stuInfoForUpdateDTO = StudentInfoVOConvert.INSTANCE.addParamToDto(addParam);
         return  frontStuInfoService.StuUpdate(stuInfoForUpdateDTO);
@@ -41,11 +44,13 @@ public class FrontStuInfoController {
     /**
      * 学生登录
      * @param stuNum
-     * @param key
+     * @param password
      * @return
      */
+    //127.0.0.1:9094/SouthEast/student/front/login?stuNum=10417114&password=leimiaomiao
+    //todo:业务逻辑出错/可以跑
     @RequestMapping(value="SouthEast/student/front/login")
-    public Boolean LoginByStu(Integer stuNum , String key){
-        return frontStuInfoService.StuLogin(stuNum,key);
+    public Boolean LoginByStu(Integer stuNum , String password){
+        return frontStuInfoService.StuLogin(stuNum,password);
     }
 }
