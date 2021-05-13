@@ -11,7 +11,9 @@ import com.mayang.provider.dao.GoodsInfo.GoodsInfoDO;
 import com.mayang.provider.dao.mapper.GoodsInfoMapper;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 
 @Service
@@ -28,7 +30,10 @@ public class EndGoodInfoServiceImpl implements EndGoodInfoService {
             new MyException("该商品已经下架!");
         }else {
             goodsDelSelInfoDO.setGoodStatus(GoodsStatus.GOODS_DOWN.getCode());
-            goodsDelSelInfoDO.setGoodEndtime(LocalDateTime.now());
+            SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");//标注时间格式
+            Date dateNow = new Date();
+            String timeNow =sf.format(dateNow);
+            goodsDelSelInfoDO.setGoodEndtime(timeNow);
         }
         goodsInfoMapper.delete(lambdaQueryWrapper.eq(GoodsInfoDO::getGoodsNum,goodsNum));
         Integer insertInfo = goodsInfoMapper.insert(goodsDelSelInfoDO);

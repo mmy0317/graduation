@@ -33,7 +33,10 @@ public class EndStuInfoController {
      * @param stuNum
      * @return
      */
+    //127.0.0.1:9094/SouthEast/student/end/delete?stuNum=10417114
+    //检验结果 : 完成了软删除
     @RequestMapping(value="SouthEast/student/end/delete",method=RequestMethod.GET)
+    @ResponseBody
     public Boolean deleteStuInfo(Integer stuNum){
         return studentInfoService.DeleteInfo(stuNum);
     }

@@ -21,7 +21,7 @@ public class FrontStuInfoController {
      * @return
      */
     //127.0.0.1:9094/SouthEast/student/front/creat?name= &realName= &stuNum= &gender= &personalWord= &phone= &wechat= &qqNum= &age= &password= &stuStatus= &stuDrom=
-    //eg : 127.0.0.1:9094/SouthEast/student/front/creat?name=长风&realName=马扬&stuNum=10417114&gender=1&personalWord=计算机一班班草吴世豪&phone=18851976933&wechat=m18851976933&qqNum=1659254531&age=21&password=leimiaomiao&stuStatus=2&stuDrom=桃园三舍403
+    //127.0.0.1:9094/SouthEast/student/front/creat?name=长风&realName=马扬&stuNum=10417114&gender=1&personalWord=计算机一班班草&phone=18851976933&wechat=m18851976933&qqNum=1659254531&age=21&password=leimiaomiao&stuStatus=2&stuDrom=桃园三舍403
     //return true
     @RequestMapping(value="SouthEast/student/front/creat",method=RequestMethod.GET)
     public Boolean CreatInfoByStu(StuAddParam addParam){
@@ -34,7 +34,8 @@ public class FrontStuInfoController {
      * @param addParam
      * @return
      */
-    //todo:逻辑出错,显示该用户已存在
+    //127.0.0.1:9094/SouthEast/student/front/update?name=长风&realName=马阳&stuNum=10417114&gender=1&personalWord=计算机一班班草&phone=18851976933&wechat=m18851976933&qqNum=1659254531&age=21&password=leimiaomiao&stuStatus=2&stuDrom=桃园三舍403
+    //检验结果 : 能成功修改
     @RequestMapping(value="SouthEast/student/front/update",method=RequestMethod.GET)
     public Boolean UpdateInfoByStu(StuAddParam addParam){
         StuInfoDTO stuInfoForUpdateDTO = StudentInfoVOConvert.INSTANCE.addParamToDto(addParam);
@@ -47,8 +48,8 @@ public class FrontStuInfoController {
      * @param password
      * @return
      */
-    //127.0.0.1:9094/SouthEast/student/front/login?stuNum=10417114&password=leimiaomiao
-    //todo:业务逻辑出错/可以跑
+    //127.0.0.1:9094/SouthEast/student/front/login?stuNum=10417115&password=20000315ymq
+    //检验结果 : 可以通过账号密码进行登录 , 业务逻辑正确
     @RequestMapping(value="SouthEast/student/front/login")
     public Boolean LoginByStu(Integer stuNum , String password){
         return frontStuInfoService.StuLogin(stuNum,password);

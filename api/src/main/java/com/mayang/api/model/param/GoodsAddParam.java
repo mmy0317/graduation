@@ -6,6 +6,7 @@ import lombok.Data;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -29,23 +30,24 @@ public class GoodsAddParam implements Serializable {
     @NotNull(message="请描述商品名字")
     private String goodName;
 
+
     @ApiModelProperty(value="商品介绍图片的链接")
     @NotNull(message="请上传一张商品介绍图片")
     private String picImg;
 
-    @ApiModelProperty(value="上架学生的学号")
-    @NotNull(message="上架学生的学号不能为空")
-    private Integer stuNum;
+//    @ApiModelProperty(value="上架学生的学号")
+//    @NotNull(message="上架学生的学号不能为空")
+//    private Integer stuNum;
 
     @ApiModelProperty(value="商品介绍文字")
     @NotNull(message="商品介绍文字不能为空")
     private String goodItems;
 
-    @ApiModelProperty(value="商品上架时间")
-    private Date goodStarttime;
+//    @ApiModelProperty(value="商品上架时间")
+//    private LocalDateTime goodStarttime;
 
-    @ApiModelProperty(value="商品下架时间")
-    private Date goodEndtime;
+//    @ApiModelProperty(value="商品下架时间")
+//    private LocalDateTime goodEndtime;
 
 //    @ApiModelProperty(value="商品浏览次数")
 //    @NotNull(message="//")

@@ -12,7 +12,9 @@ import com.mayang.provider.dao.GoodsInfo.GoodsInfoDO;
 import com.mayang.provider.dao.mapper.GoodsInfoMapper;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,7 +35,7 @@ public class FrontGoodInfoServiceImpl implements FrontGoodInfoService {
         }
         GoodsInfoDO goodsInsertInfoDO =GoodsInfoDaoConvert.INSTANCE.goodsDtoToDo(goodsInfoDTO);
         Integer add = goodsInfoMapper.insert(goodsInsertInfoDO);
-        if (add > 1){
+        if (add == 1){
             return true;
         }
         return false;
@@ -52,34 +54,43 @@ public class FrontGoodInfoServiceImpl implements FrontGoodInfoService {
             throw new MyException("该商品已下架");
         }
         goodsSelectInfoDO.setGoodStatus(GoodsStatus.GOODS_DOWN.getCode());
+        //回填删除时间
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");//标注时间格式
+        Date dateNow = new Date();
+        String timeNow =sf.format(dateNow);
+        goodsSelectInfoDO.setGoodEndtime(timeNow);
+        //删除旧的,增加新的
         goodsInfoMapper.deleteById(goodsSelectInfoDO.getId());
         Integer delete = goodsInfoMapper.insert(goodsSelectInfoDO);
-        if (delete > 1){
+        if (delete == 1){
             return true;
         }
         return false;
     }
 
     /**
-     * @Decription 学生更新自己的商品
+     * @Decription 学生更新自己的商品,我们在学生点击更新商品的时候回查询商品的详情,再将学生更新的内容返回来
      * @param goodsInfoDTO
      * @return
      */
     @Override
     public Boolean StuUpdateGoods(GoodsInfoDTO goodsInfoDTO) {
         String goodsNum = goodsInfoDTO.getGoodsNum();
+        //根据商品id查询商品
         GoodsInfoDO goodsSelInfoDO = goodsInfoMapper.selectOne(Wrappers.<GoodsInfoDO>lambdaQuery()
                 .eq(GoodsInfoDO::getGoodsNum,goodsNum)
                 .eq(GoodsInfoDO::getStuNum,goodsInfoDTO.getStuNum())
                 .ne(GoodsInfoDO::getGoodStatus,GoodsStatus.GOODS_DOWN.getCode()));
-        //信息回填
+        //查看更改
+        //从查出来的对象中获取数据,回填id,唯一码
         GoodsInfoDO goodsUpdateInfoDO = GoodsInfoDaoConvert.INSTANCE.goodsDtoToDo(goodsInfoDTO);
         goodsUpdateInfoDO.setId(goodsSelInfoDO.getId());
+        //goodsUpdateInfoDO.setGoodsNum(goodsInfoDTO.getGoodsNum());
         goodsUpdateInfoDO.setGoodStarttime(goodsSelInfoDO.getGoodStarttime());
         //实现更新
         goodsInfoMapper.deleteById(goodsSelInfoDO.getId());
         Integer update = goodsInfoMapper.insert(goodsUpdateInfoDO);
-        if (update>1){
+        if (update>=1){
             return true;
         }
         return false;

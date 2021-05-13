@@ -1,6 +1,8 @@
 package com.mayang.api.model.InfoDTO;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -31,18 +33,21 @@ public class GoodsInfoDTO implements Serializable {
     /**
      *商品上架时间
      */
-    private LocalDateTime goodStarttime;
+    private String goodStarttime;
 
     /**
      * 商品下架时间
      */
-    private LocalDateTime goodEndtime;
+    private String goodEndtime;
 
+    /**
+     * 浏览量
+     */
     private Integer browseNum;
 
     /**
      * 商品更新时间
      */
-    private LocalDateTime goodUpdatetime;
+    private String goodUpdatetime;
 
 }

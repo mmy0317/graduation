@@ -4,9 +4,11 @@ package com.mayang.provider.dao.GoodsInfo;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
@@ -68,12 +70,12 @@ public class GoodsInfoDO {
     /**
      *商品上架时间
      */
-    private LocalDateTime goodStarttime;
+    private String goodStarttime;
 
     /**
      * 商品下架时间
      */
-    private LocalDateTime goodEndtime;
+    private String goodEndtime;
 
     /**
      * 商品浏览次数
@@ -83,6 +85,6 @@ public class GoodsInfoDO {
     /**
      * 商品更新时间
      */
-    private LocalDateTime goodUpdatetime;
+    private String goodUpdatetime;
 
 }

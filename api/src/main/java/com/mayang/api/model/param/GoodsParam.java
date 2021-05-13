@@ -12,7 +12,8 @@ import java.util.Date;
 
 @Data
 @ApiModel(value="goodsParam",description="商品信息")
-public class GoodsParam implements Serializable {
+public class
+GoodsParam implements Serializable {
 
     @ApiModelProperty(value="商品编号")
     @NotNull(message="商品编号不能为空")

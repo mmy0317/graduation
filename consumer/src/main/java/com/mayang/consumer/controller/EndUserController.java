@@ -22,8 +22,8 @@ public class EndUserController {
      * @param password
      * @return
      */
-    //127.0.0.1:9094/SouthEast/user/end/login?userId=mayang&password=mayang
-    //todo:能跑 业务逻辑问题
+    //127.0.0.1:9094/SouthEast/user/end/login?userId=mayang&password=miaomiao
+    //检测结果 : 成功
     @RequestMapping(value="SouthEast/user/end/login",method=RequestMethod.GET)
     @ResponseBody
     public Boolean EndUserLogin(String userId, String password){
@@ -36,7 +36,7 @@ public class EndUserController {
      * @return
      */
     //127.0.0.1:9094/SouthEast/user/end/add?userId=mayang&password=miaomiao
-    //true
+    //检测结果 : 成功
     @RequestMapping(value="SouthEast/user/end/add")
     public Boolean EndUserAdd(EndUserParam endUserParam){
         EndUserDTO endUserDTO =StudentInfoVOConvert.INSTANCE.endUserParamToDto(endUserParam);

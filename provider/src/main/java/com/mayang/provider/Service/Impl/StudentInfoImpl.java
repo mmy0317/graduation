@@ -66,6 +66,7 @@ public class StudentInfoImpl implements StudentInfoService{
                 .eq(StuInfoDO::getStuNum, stuNum)
                 .ne(StuInfoDO::getStuStatus,StuStatus.GRADUATION.getCode()));
         stuSelectForDeleteInfoDO.setStuStatus(StuStatus.GRADUATION.getCode());
+        stuInfoMapper.deleteById(stuSelectForDeleteInfoDO.getId());
         Integer i = stuInfoMapper.insert(stuSelectForDeleteInfoDO);
         if (i>0){
             return true;
