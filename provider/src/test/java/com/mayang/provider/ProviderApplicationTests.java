@@ -6,8 +6,10 @@ import java.util.Date;
 import com.alibaba.dubbo.common.utils.StringUtils;
 import com.mayang.api.convert.GoodInfoVOConvert;
 import com.mayang.api.model.Enum.GoodsStatus;
+import com.mayang.api.model.Enum.OrderStatusEnum;
 import com.mayang.api.model.InfoDTO.EndUserDTO;
 import com.mayang.api.model.InfoDTO.GoodsInfoDTO;
+import com.mayang.api.model.InfoDTO.OrdersDTO;
 import com.mayang.api.model.InfoDTO.StuInfoDTO;
 import com.mayang.api.model.param.GoodsAddParam;
 import com.mayang.api.model.param.StuParam;
@@ -158,5 +160,34 @@ class ProviderApplicationTests {
 
         frontGoodInfoService.StuUpdateGoods(goodsInfoDTO);
     }
+
+    /**
+     * 校验订单的创建过程
+     */
+    @Test
+    @Rollback
+    @Transactional
+    public void test6(){
+        OrdersDTO ordersDTO = new OrdersDTO();
+        ordersDTO.setGoodsNum("5faad270-1a00-476c-8a60-db3ee7hdhjsagdccc4c");
+        ordersDTO.setRstuNum(10417114);
+        ordersDTO.setBstuNum(10417119);
+//        ordersDTO.setOrderNum("");
+//        ordersDTO.setStartDate("");
+//        ordersDTO.setFinishDate("");
+//        ordersDTO.setOrderStatus(0);
+//        ordersDTO.setOrdersCancel("");
+
+        Date now = new Date();//获取当前时间
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String creatTime = dateFormat.format(now);
+        ordersDTO.setStartDate(creatTime);
+        //填入订单号
+        ordersDTO.setOrderNum(UUID.randomUUID().toString());
+        //设置订单状态
+        ordersDTO.setOrderStatus(OrderStatusEnum.DOING.getCode());
+        frontStuInfoService.CreatOrders(ordersDTO);
+    }
+
 
 }

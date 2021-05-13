@@ -1,5 +1,6 @@
 package com.mayang.api.BusinessStuInfoService;
 
+import com.mayang.api.model.InfoDTO.OrdersDTO;
 import com.mayang.api.model.InfoDTO.StuInfoDTO;
 
 public interface FrontStuInfoService {
@@ -25,4 +26,11 @@ public interface FrontStuInfoService {
      * @return
      */
     Boolean StuLogin(Integer stuNum , String key);
+
+    /**
+     * @Description 创建订单
+     * @param ordersDTO
+     * @return
+     */
+    Boolean CreatOrders(OrdersDTO ordersDTO);
 }

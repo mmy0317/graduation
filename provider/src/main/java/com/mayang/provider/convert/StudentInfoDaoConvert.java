@@ -1,7 +1,9 @@
 package com.mayang.provider.convert;
 
 
+import com.mayang.api.model.InfoDTO.OrdersDTO;
 import com.mayang.api.model.InfoDTO.StuInfoDTO;
+import com.mayang.provider.dao.StudentInfo.OrderDO;
 import com.mayang.provider.dao.StudentInfo.StuInfoDO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -14,4 +16,6 @@ public interface StudentInfoDaoConvert {
     StuInfoDO stuDtoToDo(StuInfoDTO stuInfoDTO);
 
     StuInfoDTO stuDoToDto(StuInfoDO stuInfoDO);
+
+    OrderDO orderDtoToDo(OrdersDTO ordersDTO);
 }

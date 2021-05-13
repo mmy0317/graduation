@@ -1,8 +1,10 @@
 package com.mayang.api.convert;
 
 import com.mayang.api.model.InfoDTO.EndUserDTO;
+import com.mayang.api.model.InfoDTO.OrdersDTO;
 import com.mayang.api.model.InfoDTO.StuInfoDTO;
 import com.mayang.api.model.param.EndUserParam;
+import com.mayang.api.model.param.OrdersParam;
 import com.mayang.api.model.param.StuAddParam;
 import com.mayang.api.model.param.StuParam;
 import org.mapstruct.Mapper;
@@ -18,5 +20,7 @@ public interface StudentInfoVOConvert {
     StuInfoDTO paramToDto(StuParam stuParam);
 
     EndUserDTO endUserParamToDto (EndUserParam endUserParam);
+
+    OrdersDTO ordersParamToDto(OrdersParam ordersParam);
 
 }

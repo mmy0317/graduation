@@ -6,19 +6,28 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.mayang.api.BusinessStuInfoService.FrontStuInfoService;
 import com.mayang.api.model.Enum.StuStatus;
+import com.mayang.api.model.InfoDTO.OrdersDTO;
 import com.mayang.api.model.InfoDTO.StuInfoDTO;
 import com.mayang.api.utils.MyException;
 import com.mayang.provider.convert.StudentInfoDaoConvert;
+import com.mayang.provider.dao.GoodsInfo.GoodsInfoDO;
+import com.mayang.provider.dao.StudentInfo.OrderDO;
 import com.mayang.provider.dao.StudentInfo.StuInfoDO;
+import com.mayang.provider.dao.mapper.OrdersInfoMapper;
 import com.mayang.provider.dao.mapper.StuInfoMapper;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Service
 public class FrontStuInfoServiceImpl implements FrontStuInfoService {
 
     @Resource
     StuInfoMapper stuInfoMapper;
+
+    @Resource
+    OrdersInfoMapper ordersInfoMapper;
 
     @Override
     public Boolean StuAddInfo(StuInfoDTO stuInfoDTO) {
@@ -75,6 +84,45 @@ public class FrontStuInfoServiceImpl implements FrontStuInfoService {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public Boolean CreatOrders(OrdersDTO ordersDTO) {
+        if (ordersDTO==null){
+            throw new NullPointerException("传入的参数为空");
+        }
+        //参数错误的判断以及回填
+        if (ordersDTO.getRstuNum()==null || ordersDTO.getBstuNum()==null || ordersDTO.getGoodsNum()==null){
+            throw new MyException("请你好好传参数,谢谢");
+        }
+        if(ordersDTO.getStartDate()==null){
+            Date now = new Date();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String creatTime = dateFormat.format(now);
+            ordersDTO.setStartDate(creatTime);
+        }
+        //查询该商品是否存在
+        GoodsInfoDO goodsFindInfoDO = ordersInfoMapper.selectGoods(ordersDTO.getGoodsNum());
+        if (goodsFindInfoDO==null){
+            throw new NullPointerException("该商品不存在");
+        }
+        //查看学生是否存在
+        StuInfoDO rentStuDO =stuInfoMapper.selectOne(Wrappers.<StuInfoDO>lambdaQuery()
+                .eq(StuInfoDO::getStuNum,ordersDTO.getBstuNum()));
+        StuInfoDO borrowStuDO = stuInfoMapper.selectOne(Wrappers.<StuInfoDO>lambdaQuery()
+                .eq(StuInfoDO::getStuNum,ordersDTO.getRstuNum()));
+        if (rentStuDO==null||borrowStuDO==null){
+            throw new NullPointerException("学生不存在");
+        }
+        //数据类型转换
+        OrderDO creatOrderDO = StudentInfoDaoConvert.INSTANCE.orderDtoToDo(ordersDTO);
+        //数据库插入
+        Integer add = ordersInfoMapper.insert(creatOrderDO);
+        if (add<=0){
+            return false;
+        }
+        return true;
+        //todo:对于学生/商品是否存在的判断; 对于商品是否下架的判断
     }
 
 

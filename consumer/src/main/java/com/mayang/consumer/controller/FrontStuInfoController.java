@@ -3,11 +3,19 @@ package com.mayang.consumer.controller;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.mayang.api.BusinessStuInfoService.FrontStuInfoService;
 import com.mayang.api.convert.StudentInfoVOConvert;
+import com.mayang.api.model.Enum.OrderStatusEnum;
+import com.mayang.api.model.InfoDTO.OrdersDTO;
 import com.mayang.api.model.InfoDTO.StuInfoDTO;
+import com.mayang.api.model.param.OrdersParam;
 import com.mayang.api.model.param.StuAddParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.UUID;
 
 @RestController
 public class FrontStuInfoController {
@@ -54,4 +62,32 @@ public class FrontStuInfoController {
     public Boolean LoginByStu(Integer stuNum , String password){
         return frontStuInfoService.StuLogin(stuNum,password);
     }
+
+    /**
+     * 订单创建
+     * @param ordersParam
+     * @return
+     */
+    //127.0.0.1:9094/SouthEast/student/order/creat?
+
+    @RequestMapping(value="SouthEast/student/order/creat",method=RequestMethod.GET)
+    @ResponseBody
+    public String CreateOrder(OrdersParam ordersParam){
+        OrdersDTO ordersDTO = StudentInfoVOConvert.INSTANCE.ordersParamToDto(ordersParam);
+        //填入时间
+        Date now = new Date();//获取当前时间
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String creatTime = dateFormat.format(now);
+        ordersDTO.setStartDate(creatTime);
+        //填入订单号
+        ordersDTO.setOrderNum(UUID.randomUUID().toString());
+        //设置订单状态
+        ordersDTO.setOrderStatus(OrderStatusEnum.DOING.getCode());
+        Boolean result = frontStuInfoService.CreatOrders(ordersDTO);
+        if (result==true){
+            return "已将您的意向发给该同学,请敬请等候噢";
+        }
+        return "好像出问题了噢,请同学稍后再试 ";
+    }
+
 }
