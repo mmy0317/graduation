@@ -5,6 +5,7 @@ import com.mayang.api.BusinessEndService.StudentInfoService;
 import com.mayang.api.model.InfoDTO.StuInfoDTO;
 import com.mayang.api.model.param.StuAddParam;
 import com.mayang.api.convert.StudentInfoVOConvert;
+import com.mayang.api.model.param.StuEndUpdateParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -42,14 +43,14 @@ public class EndStuInfoController {
     }
 
     /**
-     * @description:更新学生信息
-     * @param addParam
+     * @description:更新学生信息,更新学生班级,院系,状态等信息
+     * @param updateParam
      * @return
      */
-    //todo:暂时不做/建议改成批量更新
+    //todo:测试
     @RequestMapping(value="SouthEast/student/end/update",method=RequestMethod.POST)
-    public Boolean updateStuInfo(StuAddParam addParam){
-        StuInfoDTO stuInfoForUpdateDTO =StudentInfoVOConvert.INSTANCE.addParamToDto(addParam);
+    public Boolean updateStuInfo(StuEndUpdateParam updateParam){
+        StuInfoDTO stuInfoForUpdateDTO =StudentInfoVOConvert.INSTANCE.updateParamToDto(updateParam);
         return studentInfoService.UpdateInfo(stuInfoForUpdateDTO);
     }
 

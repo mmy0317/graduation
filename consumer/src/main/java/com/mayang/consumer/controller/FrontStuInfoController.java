@@ -4,6 +4,7 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.mayang.api.BusinessStuInfoService.FrontStuInfoService;
 import com.mayang.api.convert.StudentInfoVOConvert;
 import com.mayang.api.model.Enum.OrderStatusEnum;
+import com.mayang.api.model.Enum.StuStatus;
 import com.mayang.api.model.InfoDTO.OrdersDTO;
 import com.mayang.api.model.InfoDTO.StuInfoDTO;
 import com.mayang.api.model.param.OrdersParam;
@@ -38,15 +39,18 @@ public class FrontStuInfoController {
     }
 
     /**
-     * 学生更新个人信息
+     * 学生更新个人信息,无法改变自己的班级和院系
      * @param addParam
      * @return
      */
-    //127.0.0.1:9094/SouthEast/student/front/update?name=长风&realName=马阳&stuNum=10417114&gender=1&personalWord=计算机一班班草&phone=18851976933&wechat=m18851976933&qqNum=1659254531&age=21&password=leimiaomiao&stuStatus=2&stuDrom=桃园三舍403
+    //127.0.0.1:9094/SouthEast/student/front/update?name=长风&realName=马阳&stuNum=10417114&gender=1&personalWord=计算机一班班草&phone=18851976933&wechat=m18851976933&qqNum=1659254531&age=21&password=leimiaomiao&stuDrom=桃园三舍403
     //检验结果 : 能成功修改
+    //todo:测试
     @RequestMapping(value="SouthEast/student/front/update",method=RequestMethod.GET)
     public Boolean UpdateInfoByStu(StuAddParam addParam){
         StuInfoDTO stuInfoForUpdateDTO = StudentInfoVOConvert.INSTANCE.addParamToDto(addParam);
+        //回填学生状态
+        stuInfoForUpdateDTO.setStuStatus(StuStatus.READING.getCode());
         return  frontStuInfoService.StuUpdate(stuInfoForUpdateDTO);
     }
 

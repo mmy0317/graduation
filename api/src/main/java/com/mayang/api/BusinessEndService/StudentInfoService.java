@@ -31,7 +31,8 @@ public interface StudentInfoService {
      * @param stuInfoDTO
      * @return
      */
-    Boolean UpdateInfo(StuInfoDTO stuInfoDTO);
+    Boolean
+    UpdateInfo(StuInfoDTO stuInfoDTO);
 
 
 }

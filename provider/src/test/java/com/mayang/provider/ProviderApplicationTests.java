@@ -145,7 +145,7 @@ class ProviderApplicationTests {
     public void test5(){
         GoodsInfoDTO goodsInfoDTO = new GoodsInfoDTO();
         goodsInfoDTO.setGoodsNum("5faad270-1a00-476c-8a60-db3ee7cccc4c");
-        goodsInfoDTO.setGoodStatus(1);
+//        goodsInfoDTO.setGoodStatus(1);
         goodsInfoDTO.setPrice(1000);
         goodsInfoDTO.setGoodName("Java技术手册");
         goodsInfoDTO.setPicImg("null");

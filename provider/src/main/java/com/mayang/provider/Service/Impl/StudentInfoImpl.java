@@ -80,15 +80,22 @@ public class StudentInfoImpl implements StudentInfoService{
      * @param stuInfoForUpdateDTO
      * @return Boolean
      */
+    //todo:后台管理员只能更新学生的班级院系或者状态,未完成
     @Override
     public Boolean UpdateInfo(StuInfoDTO stuInfoForUpdateDTO) {
-        this.Check(stuInfoForUpdateDTO);
         StuInfoDO stuInfoForUpdateDO = StudentInfoDaoConvert.INSTANCE.stuDtoToDo(stuInfoForUpdateDTO);
+        //信息回填 班级 院系 状态 三个部分
         LambdaQueryWrapper<StuInfoDO> lambdaQueryWrapper = new LambdaQueryWrapper<>();
-        stuInfoMapper.delete(lambdaQueryWrapper
+        StuInfoDO stuInfoDO = stuInfoMapper.selectOne(lambdaQueryWrapper
                 .eq(StuInfoDO::getStuNum, stuInfoForUpdateDTO.getStuNum())
-                .eq(StuInfoDO::getRealName,stuInfoForUpdateDTO.getRealName())
                 .ne(StuInfoDO::getStuStatus, StuStatus.GRADUATION.getCode()));
+        //信息回填
+        stuInfoDO.setClassRoom(stuInfoForUpdateDTO.getClassRoom());
+        stuInfoDO.setDepartment(stuInfoForUpdateDTO.getDepartment());
+        stuInfoDO.setStuStatus(stuInfoForUpdateDTO.getStuStatus());
+        //删除原数据
+        stuInfoMapper.deleteById(stuInfoForUpdateDTO.getId());
+        //插入数据
         Integer i = stuInfoMapper.insert(stuInfoForUpdateDO);
         if (i>0){
             return true;
