@@ -45,7 +45,6 @@ public class FrontStuInfoController {
      */
     //127.0.0.1:9094/SouthEast/student/front/update?name=长风&realName=马阳&stuNum=10417114&gender=1&personalWord=计算机一班班草&phone=18851976933&wechat=m18851976933&qqNum=1659254531&age=21&password=leimiaomiao&stuDrom=桃园三舍403
     //检验结果 : 能成功修改
-    //todo:测试
     @RequestMapping(value="SouthEast/student/front/update",method=RequestMethod.GET)
     public Boolean UpdateInfoByStu(StuAddParam addParam){
         StuInfoDTO stuInfoForUpdateDTO = StudentInfoVOConvert.INSTANCE.addParamToDto(addParam);

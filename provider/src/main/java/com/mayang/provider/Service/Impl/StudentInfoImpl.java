@@ -80,7 +80,6 @@ public class StudentInfoImpl implements StudentInfoService{
      * @param stuInfoForUpdateDTO
      * @return Boolean
      */
-    //todo:后台管理员只能更新学生的班级院系或者状态,未完成
     @Override
     public Boolean UpdateInfo(StuInfoDTO stuInfoForUpdateDTO) {
         StuInfoDO stuInfoForUpdateDO = StudentInfoDaoConvert.INSTANCE.stuDtoToDo(stuInfoForUpdateDTO);
@@ -93,10 +92,9 @@ public class StudentInfoImpl implements StudentInfoService{
         stuInfoDO.setClassRoom(stuInfoForUpdateDTO.getClassRoom());
         stuInfoDO.setDepartment(stuInfoForUpdateDTO.getDepartment());
         stuInfoDO.setStuStatus(stuInfoForUpdateDTO.getStuStatus());
-        //删除原数据
         stuInfoMapper.deleteById(stuInfoForUpdateDTO.getId());
         //插入数据
-        Integer i = stuInfoMapper.insert(stuInfoForUpdateDO);
+        Integer i = stuInfoMapper.insert(stuInfoDO);
         if (i>0){
             return true;
         }else {

@@ -47,8 +47,10 @@ public class EndStuInfoController {
      * @param updateParam
      * @return
      */
-    //todo:测试
-    @RequestMapping(value="SouthEast/student/end/update",method=RequestMethod.POST)
+    //127.0.0.1:9094/SouthEast/student/end/update?classRoom=计科1班&department=电子与计算机系&status=2&stuNum=10417114
+    //结果:成功
+    @RequestMapping(value="SouthEast/student/end/update",method=RequestMethod.GET)
+    @ResponseBody
     public Boolean updateStuInfo(StuEndUpdateParam updateParam){
         StuInfoDTO stuInfoForUpdateDTO =StudentInfoVOConvert.INSTANCE.updateParamToDto(updateParam);
         return studentInfoService.UpdateInfo(stuInfoForUpdateDTO);
