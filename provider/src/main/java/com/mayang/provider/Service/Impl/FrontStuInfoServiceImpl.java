@@ -122,7 +122,6 @@ public class FrontStuInfoServiceImpl implements FrontStuInfoService {
             return false;
         }
         return true;
-        //todo:对于学生/商品是否存在的判断; 对于商品是否下架的判断
     }
 
 

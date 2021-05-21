@@ -17,17 +17,17 @@ public class EndStuInfoController {
     @Reference
     private StudentInfoService studentInfoService;
 
-    /**
-     * @description 后台增加学生信息
-     * @param stuAddParam
-     * @return
-     */
-    //todo:暂时不做/建议改成批量增加
-    @RequestMapping(value="SouthEast/student/end/creat",method=RequestMethod.GET)
-    public Boolean creatStuInfo(StuAddParam stuAddParam){
-        StuInfoDTO stuInfoForInsertDTO = StudentInfoVOConvert.INSTANCE.addParamToDto(stuAddParam);
-        return studentInfoService.AddInfo(stuInfoForInsertDTO);
-    }
+//    /**
+//     * @description 后台增加学生信息
+//     * @param stuAddParam
+//     * @return
+//     */
+//    //todo:暂时不做/建议改成批量增加
+//    @RequestMapping(value="SouthEast/student/end/creat",method=RequestMethod.GET)
+//    public Boolean creatStuInfo(StuAddParam stuAddParam){
+//        StuInfoDTO stuInfoForInsertDTO = StudentInfoVOConvert.INSTANCE.addParamToDto(stuAddParam);
+//        return studentInfoService.AddInfo(stuInfoForInsertDTO);
+//    }
 
     /**
      * @description 学生毕业或者离校,根据学号软删除学生信息
