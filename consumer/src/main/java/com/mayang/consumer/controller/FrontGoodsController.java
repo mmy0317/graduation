@@ -36,7 +36,7 @@ public class FrontGoodsController {
     //检测结果:成功插入,返回true
     @RequestMapping(value="SouthEast/goods/front/creat",method=RequestMethod.GET)
     @ResponseBody
-    public Boolean CreatGoods(GoodsAddParam goodsAddParam , StuParam stuParam){
+    public String CreatGoods(GoodsAddParam goodsAddParam , StuParam stuParam){
         GoodsInfoDTO goodsInsertInfoDTO = GoodInfoVOConvert.INSTANCE.addParamToDto(goodsAddParam);
         if (goodsInsertInfoDTO.getPrice()<0){
             throw new MyException("商品价格错误");
@@ -53,7 +53,11 @@ public class FrontGoodsController {
         goodsInsertInfoDTO.setGoodStatus(GoodsStatus.GOODS_IN.getCode());
         goodsInsertInfoDTO.setGoodsNum(UUID.randomUUID().toString());
         goodsInsertInfoDTO.setStuNum(stuParam.getStuNum());
-        return frontGoodInfoService.StuAddGoods(goodsInsertInfoDTO);
+        if (frontGoodInfoService.StuAddGoods(goodsInsertInfoDTO)==true){
+            return "恭喜您完成了商品的上架!";
+        }else {
+            return "一股神奇的力量阻止了您的上架操作,请检查一下再试试吧!";
+        }
     }
 
     /**
