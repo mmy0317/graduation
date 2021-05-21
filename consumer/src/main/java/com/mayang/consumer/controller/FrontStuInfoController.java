@@ -9,16 +9,14 @@ import com.mayang.api.model.InfoDTO.OrdersDTO;
 import com.mayang.api.model.InfoDTO.StuInfoDTO;
 import com.mayang.api.model.param.OrdersParam;
 import com.mayang.api.model.param.StuAddParam;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
 @RestController
+@CrossOrigin
 public class FrontStuInfoController {
 
     @Reference
@@ -33,9 +31,16 @@ public class FrontStuInfoController {
     //127.0.0.1:9094/SouthEast/student/front/creat?name=长风&realName=马扬&stuNum=10417114&gender=1&personalWord=计算机一班班草&phone=18851976933&wechat=m18851976933&qqNum=1659254531&age=21&password=leimiaomiao&stuStatus=2&stuDrom=桃园三舍403
     //return true
     @RequestMapping(value="SouthEast/student/front/creat",method=RequestMethod.GET)
-    public Boolean CreatInfoByStu(StuAddParam addParam){
+    @ResponseBody
+    public String CreatInfoByStu(StuAddParam addParam){
         StuInfoDTO stuInfoForInsertDTO = StudentInfoVOConvert.INSTANCE.addParamToDto(addParam);
-        return frontStuInfoService.StuAddInfo(stuInfoForInsertDTO);
+        Boolean signIn = frontStuInfoService.StuAddInfo(stuInfoForInsertDTO);
+        if (signIn==true){
+            return "恭喜你,注册成功了噢";
+        }else {
+            return "对不起,不知道为啥注册失败了,请您检查一下该学号是否注册过了噢.或者请稍后再试.";
+        }
+
     }
 
     /**
@@ -61,7 +66,7 @@ public class FrontStuInfoController {
      */
     //127.0.0.1:9094/SouthEast/student/front/login?stuNum=10417115&password=20000315ymq
     //检验结果 : 可以通过账号密码进行登录 , 业务逻辑正确
-    @RequestMapping(value="SouthEast/student/front/login")
+    @RequestMapping(value="SouthEast/student/front/login",method=RequestMethod.POST)
     public Boolean LoginByStu(Integer stuNum , String password){
         return frontStuInfoService.StuLogin(stuNum,password);
     }
@@ -92,5 +97,7 @@ public class FrontStuInfoController {
         }
         return "好像出问题了噢,请同学稍后再试 ";
     }
+
+    //todo:举报功能
 
 }
